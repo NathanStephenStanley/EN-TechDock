@@ -8,3 +8,5 @@ EN-TechDock was first an idea from Elkin Ranjith to emulate the MacOS experience
 This was soon continued by him and Nathan Stanley together to accomplish what you see now.
 
 # Installing EN-TechDock
+Installing EN-TechDock is very simple to install. The process is not much of an installation but just the running of an application. Download the zip file and run dock.exe.
+That's it your done! Enjoy!
