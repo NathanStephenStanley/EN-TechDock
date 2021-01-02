@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -38,6 +39,7 @@ public class Main extends Application {
 
         stckPaneDock.setClip(dockRectangle);
 
+
         Button btnClose = new Button();
         btnClose.setGraphic(new ImageView(new Image("dock/EN Icons/Close.png")));
         btnClose.toFront();
@@ -49,9 +51,17 @@ public class Main extends Application {
         btnClose.setOnMouseClicked(e -> stage.close());
         stckPaneDock.getChildren().add(btnClose);
 
+        Launchpad btnLaunchpad = new Launchpad();
+
+        stckPaneDock.getChildren().add(btnLaunchpad);
+
+        Finder btnFinder = new Finder();
+        stckPaneDock.getChildren().add(btnFinder);
+
 
 
         Scene sceneDock = new Scene(stckPaneDock, 1024, 60);
+        
 
 
         stage.setScene(sceneDock);
@@ -69,6 +79,6 @@ public class Main extends Application {
     private void centerStage(Stage stage) {
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
         stage.setX((screenBounds.getWidth() - 316.0) / 5);
-        stage.setY((screenBounds.getHeight() - 150) / 1);
+        stage.setY((screenBounds.getHeight() - 110) / 1);
     }
 }
