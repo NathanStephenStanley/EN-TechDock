@@ -6,3 +6,5 @@ Our Developers are one of a kind. From our Head.
 Elkin Ranjith all the way to our senior Architect Nathan Stanley. 
 EN-TechDock was first an idea from Elkin Ranjith to emulate the MacOS experience on Windows 10, 8.1, 8, XP, & 7. 
 This was soon continued by him and Nathan Stanley together to accomplish what you see now.
+
+# Installing EN-TechDock
