@@ -1,5 +1,5 @@
 # EN-TechDock
-EN-TechDock is our MacOS Dock which works seamlessly with Windows 7, 8, 8.1 and even 10. This Dock is gonna make your old laptop look like a brand new Mac With our seamless design and are trustable source workers. EN-TechDock also comes with the new MacOS Big Sur 11 refreshed icons with uniform design and rounded corners.
+EN-TechDock is our MacOS Dock which works seamlessly with Windows 7, 8, 8.1 and even 10. This Dock is gonna make your old laptop look like a brand new Mac with our seamless design and our trustable source code developers. EN-TechDock also comes with the new MacOS Big Sur 11 refreshed icons with uniform design and rounded corners.
 
 # EN-Tech Developers
 Our Developers are one of a kind. From our Head. 
