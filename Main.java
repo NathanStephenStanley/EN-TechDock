@@ -6,9 +6,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.scene.robot.Robot;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -80,13 +82,6 @@ public class Main extends Application {
         DockItem btnPhotos = new DockItem();
         btnPhotos.setGraphic(new ImageView(new Image("dock/EN Icons/Photos.png")));
         btnPhotos.setTranslateX(-245);
-        btnPhotos.setOnMouseClicked(e -> {
-            try {
-                Runtime.getRuntime().exec("start ms-photos:");
-            } catch (IOException ioException) {
-                ioException.printStackTrace();
-            }
-        });
 
         DockItem btnContacts = new DockItem();
         btnContacts.setGraphic(new ImageView(new Image("dock/EN Icons/contacts.png")));
@@ -116,11 +111,22 @@ public class Main extends Application {
         btnAppStore.setGraphic(new ImageView(new Image("dock/EN Icons/App Store.png")));
         btnAppStore.setTranslateX(140);
 
+        DockItem btnSettings = new DockItem();
+        btnSettings.setGraphic(new ImageView(new Image("dock/EN Icons/settings.png")));
+        btnSettings.setTranslateX(195);
+        btnSettings.setOnMouseClicked(e -> {
+            Robot keyboardRobot = new Robot();
+            keyboardRobot.keyPress(KeyCode.WINDOWS);
+            keyboardRobot.keyPress(KeyCode.I);
+            keyboardRobot.keyRelease(KeyCode.I);
+            keyboardRobot.keyRelease(KeyCode.WINDOWS);
+        });
+
 
 //        Adding Items
         stckPaneDock.getChildren().addAll(btnFinder, btnLaunchpad, btnSafari, btnMail,
                 btnFaceTime, btnMessages, btnMaps, btnPhotos, btnContacts, btnReminders,
-                btnNotes, btnMusic, btnPodCasts, btnAppleTV, btnAppStore);
+                btnNotes, btnMusic, btnPodCasts, btnAppleTV, btnAppStore, btnSettings);
 
 
 
@@ -130,7 +136,7 @@ public class Main extends Application {
         stage.setScene(sceneDock);
         stage.initStyle(StageStyle.TRANSPARENT);
         stage.setAlwaysOnTop(true);
-        stage.setMinWidth(1344);
+        stage.setMinWidth(1350);
         stage.getIcons().add(new Image("dock/EN Icons/profile pic.png"));
         stage.show();
 
