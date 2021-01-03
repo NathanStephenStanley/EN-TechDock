@@ -16,8 +16,6 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-import java.io.IOException;
-
 public class Main extends Application {
 
     public static Stage stage = new Stage();
@@ -150,6 +148,6 @@ public class Main extends Application {
     private void centerStage(Stage stage) {
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
         stage.setX((screenBounds.getWidth() - 316.0) / 9);
-        stage.setY((screenBounds.getHeight() - 110) / 1);
+        stage.setY((screenBounds.getHeight() - 100) / 1);
     }
 }
