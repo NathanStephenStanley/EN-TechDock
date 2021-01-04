@@ -16,6 +16,8 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.IOException;
+
 public class Main extends Application {
 
     public static Stage stage = new Stage();
@@ -45,7 +47,7 @@ public class Main extends Application {
         btnClose.setBackground(Background.EMPTY);
         btnClose.setOnMouseEntered(e -> btnClose.setGraphic(new ImageView(new Image("dock/EN Icons/Close (hover).png"))));
         btnClose.setOnMouseExited(e -> btnClose.setGraphic(new ImageView(new Image("dock/EN Icons/Close.png"))));
-        btnClose.setTranslateX(640);
+        btnClose.setTranslateX(610);
         btnClose.setTranslateY(-20);
         btnClose.setOnMouseClicked(e -> stage.close());
         stckPaneDock.getChildren().add(btnClose);
@@ -56,10 +58,26 @@ public class Main extends Application {
 
         Finder btnFinder = new Finder();
         btnFinder.setTranslateX(-630);
+        btnFinder.setOnMouseClicked(e -> {
+            try {
+                Process process = Runtime.getRuntime().exec("explorer");
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        });
 
         DockItem btnSafari = new DockItem();
         btnSafari.setGraphic(new ImageView(new Image("dock/EN Icons/Safari.png")));
         btnSafari.setTranslateX(-520);
+        btnSafari.setOnMouseClicked(e -> {
+            try{
+                Runtime runtime = Runtime.getRuntime();
+
+                Process process = runtime.exec("\"C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe\"");
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        });
 
         DockItem btnMail = new DockItem();
         btnMail.setGraphic(new ImageView(new Image("dock/EN Icons/Mail.png")));
@@ -120,11 +138,39 @@ public class Main extends Application {
             keyboardRobot.keyRelease(KeyCode.WINDOWS);
         });
 
+        DockItem btnZoom = new DockItem();
+        btnZoom.setGraphic(new ImageView(new Image("dock/EN Icons/zoom.png")));
+        btnZoom.setTranslateX(257);
+        btnZoom.setOnMouseClicked(e -> {
+            try{
+                Runtime runtime = Runtime.getRuntime();
+
+                Process process = runtime.exec("\"C:\\Users\\eranj\\AppData\\Roaming\\Zoom\\bin\\Zoom.exe\"");
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        });
+
+        DockItem btnIdea = new DockItem();
+        btnIdea.setGraphic(new ImageView(new Image("dock/EN Icons/idea.png")));
+        btnIdea.setTranslateX(312);
+        btnIdea.setOnMouseClicked(e -> {
+            try {
+                Process process = Runtime.getRuntime().exec("\"C:\\Program Files\\JetBrains\\IntelliJ IDEA Community Edition 2020.1.1\\bin\\idea64.exe\"");
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        });
+
+        ImageView imgViewSeperator = new ImageView(new Image("dock/EN Icons/separator.png"));
+        imgViewSeperator.setTranslateX(223);
+
 
 //        Adding Items
         stckPaneDock.getChildren().addAll(btnFinder, btnLaunchpad, btnSafari, btnMail,
                 btnFaceTime, btnMessages, btnMaps, btnPhotos, btnContacts, btnReminders,
-                btnNotes, btnMusic, btnPodCasts, btnAppleTV, btnAppStore, btnSettings);
+                btnNotes, btnMusic, btnPodCasts, btnAppleTV, btnAppStore, btnSettings, imgViewSeperator,
+        btnZoom, btnIdea);
 
 
 
@@ -134,7 +180,7 @@ public class Main extends Application {
         stage.setScene(sceneDock);
         stage.initStyle(StageStyle.TRANSPARENT);
         stage.setAlwaysOnTop(true);
-        stage.setMinWidth(1350);
+        stage.setMinWidth(1393);
         stage.getIcons().add(new Image("dock/EN Icons/profile pic.png"));
         stage.show();
 
@@ -148,6 +194,6 @@ public class Main extends Application {
     private void centerStage(Stage stage) {
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
         stage.setX((screenBounds.getWidth() - 316.0) / 9);
-        stage.setY((screenBounds.getHeight() - 100) / 1);
+        stage.setY((screenBounds.getHeight() - 110) / 1);
     }
 }
