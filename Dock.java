@@ -1,6 +1,8 @@
 package dock;
 
 import javafx.scene.control.Button;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -16,7 +18,7 @@ public class Dock extends StackPane {
     public Dock(Stage stage){
         Launchpad btnLaunchpad = new Launchpad();
 
-        setMaxWidth(1375);
+        setMaxWidth(1395);
 
         setStyle("-fx-background-radius: 5 ;\n" +
                 "-fx-border-radius: 5;\n" +
@@ -33,6 +35,8 @@ public class Dock extends StackPane {
         btnClose.setTranslateX(480);
         btnClose.setTranslateY(-20);
         btnClose.setOnMouseClicked(e -> stage.close());
+
+        getChildren().add(btnClose);
 
         Rectangle dockRectangle = new Rectangle(1190, 60);
         dockRectangle.setArcHeight(30);
@@ -146,14 +150,42 @@ public class Dock extends StackPane {
             }
         });
 
-        ImageView imgViewSeperator = new ImageView(new Image("dock/EN Icons/Big Sur/separator.png"));
-        imgViewSeperator.setTranslateX(223);
+        ImageView imgViewSeparator = new ImageView(new Image("dock/EN Icons/Big Sur/separator.png"));
+        imgViewSeparator.setTranslateX(223);
+
+        ImageView imgViewSeparator2 = new ImageView(new Image("dock/EN Icons/Big Sur/separator.png"));
+        imgViewSeparator2.setTranslateX(345);
+
+        DockItem btnDownloads = new DockItem();
+        btnDownloads.setGraphic(new ImageView(new Image("dock/EN Icons/downloads.png")));
+
+        btnDownloads.setOnMouseClicked(e -> {
+            try {
+                Process process = Runtime.getRuntime().exec("explorer \"C:\\Users\\eranj\\Downloads\"");
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        });
+        DockItem recycleBin = new DockItem();
+        recycleBin.setGraphic(new ImageView(new Image("dock/EN Icons/Big Sur/empty.png")));
+        recycleBin.setTranslateX(435);
+        setOnKeyPressed(e -> {
+            KeyCode code = e.getCode();
+            if (code.equals(KeyCode.DELETE)){
+                recycleBin.setGraphic(new ImageView(new Image("dock/EN Icons/Big Sur/full.png")));
+            }
+            if (code.equals(KeyCode.E)){
+                recycleBin.setGraphic(new ImageView(new Image("dock/EN Icons/Big Sur/empty.png")));
+            }
+        });
+
+        btnDownloads.setTranslateX(380);
 
 
 //        Adding Items
         getChildren().addAll(btnFinder, btnLaunchpad, btnSafari, btnMail,
                 btnFaceTime, btnMessages, btnMaps, btnPhotos, btnContacts, btnReminders,
-                btnNotes, btnMusic, btnPodCasts, btnAppleTV, btnAppStore, btnSettings, imgViewSeperator,
-                btnZoom, btnIdea);
+                btnNotes, btnMusic, btnPodCasts, btnAppleTV, btnAppStore, btnSettings, imgViewSeparator,
+                btnZoom, btnIdea, imgViewSeparator2, btnDownloads, recycleBin);
     }
 }
