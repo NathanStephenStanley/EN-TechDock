@@ -12,15 +12,12 @@ import javafx.stage.StageStyle;
 public class Main extends Application {
 
     public static Stage stage = new Stage();
+    public static Dock dock = new Dock(stage);
 
     @Override
     public void start(Stage primaryStage) {
-        
 
         centerStage(stage);
-
-
-        Dock dock = new Dock(stage);
 
         Scene sceneDock = new Scene(dock, 1024, 60);
         sceneDock.setFill(Color.TRANSPARENT);
